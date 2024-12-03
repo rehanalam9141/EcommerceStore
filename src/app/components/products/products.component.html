@@ -1,0 +1,173 @@
+<div class="container">
+    <div class="landing-container">
+        <h3>Exclusive Products</h3>  
+        <mat-list role="list" *ngFor="let item of categoryList">
+            <!-- <button style="margin: 2px;"  [ngClass]="selectedCategory == item.categoryId?'selected':'mat-button'"  (click)="getProductsByCategoryId(item.categoryId)">{{item.categoryName}}</button> -->
+            <button style="margin-left: 10px;" mat-raised-button [ngClass]="selectedCategory == item.categoryId?'selected':''"  (click)="getProductsByCategoryId(item.categoryId)">{{item.categoryName}}</button>
+        </mat-list>
+        
+    </div>
+    <div class="spinner" *ngIf="isloading">
+        <mat-spinner></mat-spinner>
+    </div>
+    
+<!-- 
+    <div class="hero-card">
+        <mat-grid-list cols="4" rowHeight="0.9:1.2" [gutterSize]="'10px'">
+            <mat-grid-tile  *ngFor="let item of productList">
+                <mat-card class="example-card" appearance="outlined">
+                    <img mat-card-image [src]="item.productImageUrl"
+                        [alt]="item.productName">
+                    <mat-card-content>
+                        <strong>{{item.productName }}</strong>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button>${{item.productPrice}}</button>
+                        <button mat-button (click)="addToCart(item.productId)">Add to Cart</button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+    
+        </mat-grid-list>
+    </div> -->
+    
+</div>
+
+<section class="py-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="bootstrap-tabs product-tabs">
+            <div class="tabs-header d-flex justify-content-between border-bottom my-5">
+              <h3>Exclusive Products</h3>
+              <!-- <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a href="#" class="nav-link text-uppercase fs-6 active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all">All</a>
+                  <a href="#" class="nav-link text-uppercase fs-6" id="nav-fruits-tab" data-bs-toggle="tab" data-bs-target="#nav-fruits">Fruits & Veges</a>
+                  <a href="#" class="nav-link text-uppercase fs-6" id="nav-juices-tab" data-bs-toggle="tab" data-bs-target="#nav-juices">Juices</a>
+                </div>
+              </nav> -->
+            </div>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+
+                <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                
+                  <div class="col" *ngFor="let item of productList">
+                    <div class="product-item">
+                      <span class="badge bg-success position-absolute m-3">-30%</span>
+                      <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
+                      <figure>
+                        <a href="index.html" title="Product Title">
+                          <img [src]="item.productImageUrl"  class="tab-image">
+                        </a>
+                      </figure>
+                      <h6>{{item.productName | slice:0:10}}</h6>
+                      <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24" class="text-primary"><use xlink:href="#star-solid"></use></svg> 4.5</span>
+                      <span class="price">${{item.productPrice}}</span>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="input-group product-qty">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
+                                  <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
+                                </button>
+                            </span>
+                            <input type="text" readonly id="quantity" name="quantity" class="form-control input-number" value="1">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
+                                    <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
+                                </button>
+                            </span>
+                        </div>
+                        <span style="cursor: pointer;"  (click)="addToCart(item.productId)" class="badge bg-success">Add to Cart</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- / product-grid -->
+                
+              </div>
+
+              <div class="tab-pane fade" id="nav-fruits" role="tabpanel" aria-labelledby="nav-fruits-tab">
+                
+                <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                  <div class="col">
+                    <div class="product-item">
+                      <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
+                      <figure>
+                        <a href="index.html" title="Product Title">
+                          <img src="images/thumb-bananas.png"  class="tab-image">
+                        </a>
+                      </figure>
+                      <h3>Sunstar Fresh Melon Juice</h3>
+                      <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24" class="text-primary"><use xlink:href="#star-solid"></use></svg> 4.5</span>
+                      <span class="price">$18.00</span>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="input-group product-qty">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
+                                  <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
+                                </button>
+                            </span>
+                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
+                                    <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
+                                </button>
+                            </span>
+                        </div>
+                        <a href="#" class="nav-link">Add to Cart </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- / product-grid -->
+
+              </div>
+              <div class="tab-pane fade" id="nav-juices" role="tabpanel" aria-labelledby="nav-juices-tab">
+
+                <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+
+                  <div class="col">
+                    <div class="product-item">
+                      <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
+                      <figure>
+                        <a href="index.html" title="Product Title">
+                          <img src="images/thumb-bananas.png"  class="tab-image">
+                        </a>
+                      </figure>
+                      <h3>Sunstar Fresh Melon Juice</h3>
+                      <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24" class="text-primary"><use xlink:href="#star-solid"></use></svg> 4.5</span>
+                      <span class="price">$18.00</span>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="input-group product-qty">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
+                                  <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
+                                </button>
+                            </span>
+                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
+                                    <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
+                                </button>
+                            </span>
+                        </div>
+                        <a href="#" class="nav-link">Add to Cart </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- / product-grid -->
+                
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>

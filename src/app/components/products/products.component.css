@@ -1,0 +1,76 @@
+.landing-container {
+    text-align: center;
+
+}
+
+.features {
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.hero-card {
+    margin: 20px;
+}
+
+.mat-mdc-list-base {
+    display: inline-flex;
+}
+
+.mat-grid-list {
+    width: calc(((25% - 0.75px) * 4) + 2px);
+}
+
+
+.my-grid-tile {
+    padding-top: calc(40% - 7.5px) !important;
+    margin-top: 10px;
+}
+
+.example-card {
+    width: 368px;
+    min-height: 445px
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.mdc-card__media {
+    min-height: 360px;
+    max-height: 360px;
+}
+
+.mat-mdc-card-content {
+    margin-left: 14px;
+    margin-top: 24px;
+}
+
+.mat-mdc-card-content p {
+    height: 150px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.mat-mdc-card-actions {
+    margin-left: 10px;
+}
+
+
+/* .custom-class-1 {
+    background-color: var(--mdc-protected-button-container-color, var(--mat-app-surface)); 
+    color: var(--mdc-protected-button-label-text-color, var(--mat-app-primary));
+  } */
+  
+  .selected {
+    background-color: #005cbb; 
+    color: white;
+  }
+  .spinner{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .product-item{
+    max-height: 400px;
+  }

@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Registration User</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="registerForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="Name">
+          @if (registrationFormControl['Name'].touched && registrationFormControl['Name'].errors?.['required']) {
+          <mat-error>Name is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Mobile No</mat-label>
+          <input matInput formControlName="MobileNo">
+          @if (registrationFormControl['MobileNo'].touched && registrationFormControl['MobileNo'].errors?.['required'])
+          {
+          <mat-error>Mobile number is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="Password">
+          @if (registrationFormControl['Password'].touched && registrationFormControl['Password'].errors?.['required'])
+          {
+          <mat-error>Password is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="registerForm.invalid" mat-flat-button (click)="register()">Register</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

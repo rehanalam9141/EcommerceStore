@@ -1,0 +1,100 @@
+<section class="py-5">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-9">
+          <div class="bg-info mb-3">
+            <div class="banner-content p-5">
+
+                <form [formGroup]="orderForm">
+                    <div class="row">
+                        <div class="col-md-6">               
+                            <div class="mb-3">
+                                <label class="form-label">City</label>
+                                <input type="text"
+                                  class="form-control form-control-lg" formControlName="DeliveryCity"  placeholder="City">
+                              </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Postal Code</label>
+                                <input type="text"
+                                  class="form-control form-control-lg" formControlName="DeliveryPinCode" placeholder="Postal code">
+                              </div>
+                        </div>
+    
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Landmark</label>
+                                <input type="text" class="form-control form-control-lg" formControlName="DeliveryLandMark" placeholder="Landmark">
+                              </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Address 1</label>
+                                <textarea
+                                  class="form-control form-control-lg" formControlName="DeliveryAddress1" placeholder="Address 1">
+                                </textarea>
+                              </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Address 2</label>
+                                <textarea
+                                  class="form-control form-control-lg" formControlName="DeliveryAddress2"  placeholder="Address 2">
+                                </textarea>
+                              </div>
+                        </div>
+                    </div>
+                  </form>   
+
+            </div>
+          
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="banner-ad bg-info">
+            <div class="banner-content p-4">
+
+              <!-- <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
+              <h3 class="banner-title">Creamy Muffins</h3>
+              <p>Very tasty & creamy vanilla flavour creamy muffins.</p> -->
+             
+            <p  class="bg-primary text-white text-uppercase p-2 fs-5">Your Cart Item</p>
+              @for (item of cartData; track $index) {
+                <div class="card mb-3 p-3 rounded-4 shadow border-0">
+                  <div class="row g-0 mt-2">
+                    <div class="col-md-4">
+                      <img [src]="item.productImageUrl" class="img-fluid rounded" alt="Card title">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body py-0">
+                        <p class="text-muted mb-0">{{item.productName | slice:0:20}}</p>
+                        <h5 class="card-title">{{item.productPrice}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            }
+            @empty {
+                <div class="card mb-3 p-3 rounded-4 shadow border-0">
+                    <div class="row g-0 mt-2">
+                      
+                        <div class="card-body">
+                          <h6 class="text-muted mb-0">Your Cart is empty</h6>
+                        </div>
+                      </div>
+                  </div>
+            }
+
+              <p *ngIf="placeOrderShow" class="bg-primary text-uppercase p-2 text-white fs-5">Total Price: <strong>{{this.showTotalSum | currency}}</strong></p>
+              <a *ngIf="placeOrderShow" (click)="getPlaceOrder()" class="btn btn-dark text-uppercase">Place Order</a>
+
+            </div>
+          
+          </div>
+        </div>
+           
+      </div>
+    </div>
+  </section>

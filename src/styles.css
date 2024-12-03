@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.custom-snackbar .mat-mdc-snackbar-surface{
+    background-color: #005cbb !important;
+}
+.danger-snackbar .mat-mdc-snackbar-surface{
+    background-color: #dc3545!important ;
+}
+
+
+/* .container {
+    min-height: 80vh;
+    background-color: #f0f0f0;
+    padding: 1rem;
+  } */
+
+  .cdk-overlay-pane .mat-mdc-menu-panel{
+    max-width:  340px;
+  }
+ .mat-mdc-menu-content{
+  padding: 0px 0px !important;
+ }
+ .mat-mdc-menu-panel {
+  margin-top: 12px !important;
+  border-radius: 0px !important;
+ }

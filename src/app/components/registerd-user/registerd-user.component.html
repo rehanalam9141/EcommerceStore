@@ -1,0 +1,83 @@
+
+  
+ 
+  <section class="py-5">
+    <div class="container-fluid">
+
+      <div class="bg-secondary py-5 my-5 rounded-5" style="background: url('images/bg-leaves-img-pattern.png') no-repeat;">
+        <div class="container my-5">
+          <div class="row">
+            <!-- <div class="col-md-6 p-5">
+              <div class="section-header">
+                <h2 class="section-title display-4">Get <span class="text-primary">25% Discount</span> on your first purchase</h2>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst amet, metus, sit massa posuere maecenas. At tellus ut nunc amet vel egestas.</p>
+            </div>
+            <div class="col-md-6 p-5">
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text"
+                    class="form-control form-control-lg" name="name" id="name" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Email</label>
+                  <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="abc@mail.com">
+                </div>
+                <div class="form-check form-check-inline mb-3">
+                  <label class="form-check-label" for="subscribe">
+                  <input class="form-check-input" type="checkbox" id="subscribe" value="subscribe">
+                  Subscribe to the newsletter</label>
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+                </div>
+              </form>
+              
+            </div> -->
+            <div class="col-md-12">
+              <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+              </mat-form-field>
+               <mat-table [dataSource]="allUser" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="Id">
+                  <mat-header-cell *matHeaderCellDef> SNo. </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.custId}} </mat-cell>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="Name">
+                  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let name"> {{name.name}} </mat-cell>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Mobile">
+                  <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.mobileNo}} </mat-cell>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Password">
+                  <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.password}} </mat-cell>
+                </ng-container>
+              
+                <mat-header-row *matHeaderRowDef="userRegisterColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: userRegisterColumns;"></mat-row>
+                
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </mat-table>
+            
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </section>
