@@ -1,69 +1,37 @@
 import { Component, inject } from '@angular/core';
-import { MatGridListModule } from '@angular/material/grid-list'
-import {MatIcon} from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card'; 
-import { CommonModule } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
 import { ProductService } from '../../services/product.service';
-import { CategoryDto, ProductDto } from '../../model/product-dto';
 import { CartService } from '../../services/cart.service';
-import { CartDto, GetCartDto } from '../../model/cart-dto';
-import { AuthService } from '../../services/auth.service';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { GetLoginDto, registerDto, userDto } from '../../model/auth-dto';
-import {
-  MatSnackBar,
-  MatSnackBarAction,
-  MatSnackBarActions,
-  MatSnackBarLabel,
-  MatSnackBarRef,
-} from '@angular/material/snack-bar';
+import { CategoryDto, ProductDto } from '../../model/product-dto';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { CartDto, GetCartDto } from '../../model/cart-dto';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { userDto } from '../../model/auth-dto';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-category',
   standalone: true,
-  imports: [
-    MatGridListModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    MatIcon,
-    CommonModule,
-    MatButtonModule,
-    MatListModule,
-  ],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css',
+  imports: [CommonModule],
+  templateUrl: './category.component.html',
+  styleUrl: './category.component.css'
 })
-export class ProductsComponent {
-  private _snackBar = inject(MatSnackBar);
+export class CategoryComponent {
 
-  productList: ProductDto[] = [];
   categoryList: CategoryDto[] = [];
   selectedCategory: number = 0;
-  isloading = false;
+  productList: ProductDto[] = [];
   userData!: userDto;
-
-  
+  private _snackBar = inject(MatSnackBar);
 
   constructor(
     private productService: ProductService,
+    private authService:AuthService,
     private cartService: CartService,
-    private authService: AuthService,
     private router: Router
   ) {
-    this.getProducts();
     this.getCategory();
     this.userData = this.authService.getUser!;
-  }
-  getProducts() {
-    this.isloading = true;
-    this.productService.getAllProducts().subscribe((result) => {
-      this.productList = result.data;
-      this.isloading = false;
-    });
   }
 
   getCategory() {
@@ -72,6 +40,7 @@ export class ProductsComponent {
     });
   }
 
+
   getProductsByCategoryId(categoryId: number) {
     this.selectedCategory = categoryId;
     this.productService
@@ -79,6 +48,10 @@ export class ProductsComponent {
       .subscribe((result) => {
         this.productList = result.data;
       });
+  }
+
+  ProductDetail(id:number){
+    this.router.navigateByUrl("productdetail/"+id)
   }
 
   addToCart(selectedProductId: number) {
@@ -119,7 +92,4 @@ export class ProductsComponent {
     }
   }
 
-  ProductDetail(id:number){
-    this.router.navigateByUrl("productdetail/"+id)
-  }
 }

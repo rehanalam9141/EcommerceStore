@@ -24,6 +24,7 @@ export class CartService {
     return this.http.get<GetCartDtobyCustId>(this.baseUrl+'GetCartProductsByCustomerId?id='+id)
   }
 
+
   deleteProductFromCart(id:number){
     return this.http.get(this.baseUrl+'DeleteProductFromCartById?id='+id)
   }

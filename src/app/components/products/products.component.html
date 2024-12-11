@@ -1,15 +1,14 @@
-<div class="container">
-    <div class="landing-container">
+<!-- <div class="container"> -->
+    <!-- <div class="landing-container">
         <h3>Exclusive Products</h3>  
         <mat-list role="list" *ngFor="let item of categoryList">
-            <!-- <button style="margin: 2px;"  [ngClass]="selectedCategory == item.categoryId?'selected':'mat-button'"  (click)="getProductsByCategoryId(item.categoryId)">{{item.categoryName}}</button> -->
             <button style="margin-left: 10px;" mat-raised-button [ngClass]="selectedCategory == item.categoryId?'selected':''"  (click)="getProductsByCategoryId(item.categoryId)">{{item.categoryName}}</button>
         </mat-list>
         
     </div>
     <div class="spinner" *ngIf="isloading">
         <mat-spinner></mat-spinner>
-    </div>
+    </div> -->
     
 <!-- 
     <div class="hero-card">
@@ -31,14 +30,93 @@
         </mat-grid-list>
     </div> -->
     
-</div>
+ <!-- </div>-->
 
 <section class="py-5">
     <div class="container-fluid">
+
       <div class="row">
-        <div class="col-md-12">
+        <div class="spinner" *ngIf="isloading">
+          <mat-spinner></mat-spinner>
+      </div>
+        <div class="col-md-3 ">
+          <div class="d-flex flex-column flex-shrink-0 p-3 bg-light fixed-column-serach">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#search"></use></svg>
+              <span class="fs-4">Filter</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <!-- <a href="#" class="nav-link active" aria-current="page">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#category"></use></svg>
+                  Category
+                </a> -->
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Search by Name</label>
+                  <input type="text" class="form-control"  placeholder="Enter Product Name">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+              </li>
+              <hr>
+              <li>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Search by Category</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Select a Category</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </li>
+              <hr>
+              <li>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">From</label>
+                      <input type="text" class="form-control"  placeholder="0">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">To</label>
+                      <input type="text" class="form-control"  placeholder="100">
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- <li>
+                <div data-role="rangeslider">
+                  <label for="range-1a">Rangeslider:</label>
+                  <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40" data-popup-enabled="true" data-show-value="true">
+                  <label for="range-1b">Rangeslider:</label>
+                  <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80" data-popup-enabled="true" data-show-value="true">
+              </div>
+              </li> -->
+            </ul>
+            <hr>
+            <!-- <div class="dropdown">
+              <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>mdo</strong>
+              </a>
+              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-9 ">
           <div class="bootstrap-tabs product-tabs">
-            <div class="tabs-header d-flex justify-content-between border-bottom my-5">
+            <div class="tabs-header d-flex justify-content-between border-bottom mb-5">
               <h3>Exclusive Products</h3>
               <!-- <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -51,7 +129,7 @@
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
 
-                <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
                 
                   <div class="col" *ngFor="let item of productList">
                     <div class="product-item">
@@ -79,6 +157,7 @@
                                 </button>
                             </span>
                         </div>
+                        <span style="cursor: pointer;"  (click)="ProductDetail(item.productId)" class="badge bg-success">View</span>
                         <span style="cursor: pointer;"  (click)="addToCart(item.productId)" class="badge bg-success">Add to Cart</span>
                       </div>
                     </div>

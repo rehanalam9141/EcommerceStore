@@ -8,6 +8,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { RegisterdUserComponent } from './components/registerd-user/registerd-user.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CategoryComponent } from './components/category/category.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch:'full'},
@@ -15,8 +17,10 @@ export const routes: Routes = [
     {path:'contact', component:ContactComponent},
     {path:'cart-items', component:CartItemsComponent},
     {path:'products', component:ProductsComponent},
+    {path:'productdetail/:id', component:ProductDetailComponent},
     {path:'register', component:RegisterComponent},
     {path:'login', component:LoginComponent},
     {path:'users', component:RegisterdUserComponent},
     {path:'checkout', component:CheckOutComponent},
+    {path:'allcategory', component:CategoryComponent},
 ];

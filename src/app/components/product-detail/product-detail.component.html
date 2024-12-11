@@ -1,0 +1,28 @@
+<section class="py-5">
+    <div class="container-fluid">
+
+      <div class="bg-secondary py-5 my-5 rounded-5" style="background: url('images/bg-leaves-img-pattern.png') no-repeat;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+                <button class="swiper-prev brand-carousel-prev btn btn-yellow" routerLink="/products">❮</button>
+              <div class="section-header">
+                <h2 class="section-title display-4"><span class="text-primary">{{product?.productName}}</span></h2>
+              </div>
+              <h3 class="display-4">{{product?.productName}}</h3>
+           
+              <h3 class="display-4">Delivery: {{product?.deliveryTimeSpan}}</h3>
+              <span class="badge bg-success p-2">Price: {{product?.productPrice}}</span>
+              <h3 class="display-4 mt-5">{{product?.productDescription}}</h3>
+            </div>
+            <div class="col-md-6">
+                      <img [src]="product?.productImageUrl" [alt]="product?.productName" class="rounded-5 product-img">            
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </section>

@@ -1,0 +1,5 @@
+.product-img{
+    display: flex;
+    justify-self: end;
+    width: 50%;
+}

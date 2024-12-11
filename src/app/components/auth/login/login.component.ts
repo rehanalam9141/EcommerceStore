@@ -7,14 +7,14 @@ import {MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
 import { GetLoginDto, registerDto } from '../../../model/auth-dto';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,  MatFormFieldModule, MatInputModule,MatCardModule, MatButtonModule,ReactiveFormsModule, CommonModule],
+  imports: [RouterLink,FormsModule,  MatFormFieldModule, MatInputModule,MatCardModule, MatButtonModule,ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

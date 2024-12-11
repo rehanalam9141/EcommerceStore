@@ -8,12 +8,12 @@ import {MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { GetAuthDto, GetLoginDto, loginDto, registerDto } from '../../../model/auth-dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule,MatCardModule, MatButtonModule, ReactiveFormsModule, CommonModule],
+  imports: [RouterLink,FormsModule, ReactiveFormsModule,CommonModule,MatFormFieldModule, MatInputModule,MatCardModule, MatButtonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -89,6 +89,7 @@ export class RegisterComponent {
         localStorage.setItem('user', JSON.stringify(result.data))
         this.authService.isLoggedIn$.next(true)
         this.authService.getUser = result.data
+        this.authService.getUser$.next(result.data)
         this.router.navigateByUrl('/products')
       },
       error:(error:GetLoginDto)=>{

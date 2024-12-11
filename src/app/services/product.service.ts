@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CategoryResponse, GetProductDto, ProductDto } from '../model/product-dto';
+import { CategoryResponse, GetProductByIdDto, GetProductDto, ProductDto } from '../model/product-dto';
 import { environment } from '../envirments/environment';
+import { GetCartDtobyCustId } from '../model/cart-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,10 @@ export class ProductService {
     return this.http.get<GetProductDto>(this.baseUrl+'GetAllProductsByCategoryId?Id='+id)
     // return this.http.get<GetProductDto>(`this.baseUrl+'GetAllProductsByCategoryId?Id=${id}'`)
   }
+
+
+  getProductById(id:number):Observable<GetProductByIdDto>{
+    return this.http.get<GetProductByIdDto>(this.baseUrl+'GetProductById?id='+id)
+  }
+
 }

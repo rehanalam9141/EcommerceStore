@@ -4,6 +4,12 @@ export class GetProductDto {
   data!: ProductDto[];
 }
 
+export class GetProductByIdDto {
+  message!: string;
+  result!: boolean;
+  data!: ProductDto;
+}
+
 export class ProductDto {
   productId!: number;
   productSku!: string;

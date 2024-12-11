@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
     <mat-card appearance="outlined">
         <mat-card-header>
@@ -28,6 +28,50 @@
           <button [disabled]="loginForm.invalid" mat-flat-button (click)="login()">Login</button>
         </mat-card-actions>
       </mat-card>
-  </div>
+  </div> -->
   
+  <section class="">
+    <div class="container-fluid">
+
+      <div class="bg-secondary py-5 my-5 rounded-5" style="background: url('images/bg-leaves-img-pattern.png') no-repeat;">
+        <div class="container my-5">
+          <div class="row">
+                <!-- <h2 class="section-title fs-2 d-flex justify-content-center"><span class="text-primary">Login</span></h2> -->
+
+            <div class="col-md-6 p-5">
+              <div class="section-header">
+                <h2 class="section-title fs-3"><span class="text-primary">"Welcome Back!"</span> <br>Please enter your mobile no and password to access your account.</h2>
+              </div>
+              <p>Don’t have an account yet?<span class="text-primary" style="cursor: pointer;" routerLink="/register"> Register here</span></p>
+            </div>
+            <div class="col-md-6 p-5">
+              <form [formGroup]="loginForm">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Mobile No</label>
+                  <input type="text"
+                    class="form-control form-control-lg" formControlName="UserName" placeholder="Enter your mobile no ">
+                    @if (loginFormControl['UserName'].touched && loginFormControl['UserName'].errors?.['required']) {
+                        <mat-error class="error-text">Mobile number is <strong>required</strong></mat-error>
+                    }
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Password</label>
+                  <input type="password" class="form-control form-control-lg" formControlName="UserPassword" placeholder="Enter your password">
+                  @if (loginFormControl['UserPassword'].touched && loginFormControl['UserPassword'].errors?.['required']) {
+                    <mat-error class="error-text">Password is <strong>required</strong></mat-error>
+                }
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" [disabled]="loginForm.invalid" (click)="login()" class="btn btn-dark btn-lg">Login</button>
+                </div>
+              </form>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+      </div> 
+    </div>
+  </section>
   
